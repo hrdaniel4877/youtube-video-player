@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+const = AIzaSyBal0-B5ARmac3M37TRcB6eZb4EEzO8rno;
 
 // create a new component and this component should produce some HTML
 const App = () => {
