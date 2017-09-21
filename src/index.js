@@ -10,18 +10,26 @@ const API_KEY = "AIzaSyBal0-B5ARmac3M37TRcB6eZb4EEzO8rno";
 class App extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {videos: []};
+		this.state = {
+			videos: [],
+			selectedVideo: null
+		};
 		
 		YTsearch({key: API_KEY, term: 'surfboards'}, (videos) => {
-			this.setState({videos});
+			this.setState({
+				videos: videos,
+				selectedVideo: videos[0]
+			});
 		});
 	}
 	render() {
 		return ( 
 			<div>
 				<SearchBar />
-				<VideoDetail video={this.state.videos[0]} />
-				<VideoList videos={this.state.videos} />
+				<VideoDetail video={this.state.selectedVideo} />
+				<VideoList 
+					onVideoSelect = {selectedVideo => this.setState({selectedVideo})} 
+					videos = {this.state.videos} />
 			</div>
 		);
 	};
